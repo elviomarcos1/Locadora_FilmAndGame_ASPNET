@@ -17,5 +17,17 @@ namespace Locadora_Filmes_e_Jogos.Data
 
         public DbSet<Jogos> jogos { get; set; }
 
+        //DbSet com chaves estrangeiras
+        //locação
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Locacao>()
+                .HasOne(l => l.Cliente)
+                .WithMany(c => c.Locacao)
+                .HasForeignKey(l => l.fk_cliente);
+
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
 }
