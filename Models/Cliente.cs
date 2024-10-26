@@ -31,5 +31,8 @@ namespace Locadora_Filmes_e_Jogos.Models
         [MaxLength(1, ErrorMessage = "Este campo só aceita 1 character")]
         [DisplayName("Ativo")]
         public string ativo_cliente { get; set; }
+
+        //Relacionamento um para muitos
+        public ICollection<Locacao> Locacao { get; set; }
     }
 }
