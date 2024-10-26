@@ -7,7 +7,7 @@ namespace Locadora_Filmes_e_Jogos.Models
     {
         [Key]
         [DisplayName("ID")]
-        public int pk_jogos { get; set; }
+        public int pk_jogo { get; set; }
 
         [Required]
         [MaxLength(100, ErrorMessage = "Este campo só pode ter 100 Caracteres !")]
@@ -25,6 +25,6 @@ namespace Locadora_Filmes_e_Jogos.Models
 
         [MaxLength(1, ErrorMessage = "Este campo só pode ter 1 Caracteres")]
         [DisplayName("Ativo")]
-        public string ativo_jogo { get; set; }
+        public string ativo_jogos { get; set; }
     }
 }
