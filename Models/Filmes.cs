@@ -29,6 +29,6 @@ namespace Locadora_Filmes_e_Jogos.Models
 
         [MaxLength(1, ErrorMessage = "Este campo só pode ter 1 Caracteres")]
         [DisplayName("Ativo")]
-        public string ativo_filme { get; set; }
+        public string ativo_filmes { get; set; }
     }
 }
