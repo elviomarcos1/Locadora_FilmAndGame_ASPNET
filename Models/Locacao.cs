@@ -20,7 +20,7 @@ namespace Locadora_Filmes_e_Jogos.Models
         public DateTime data_devolucao_prevista { get; set; }
 
         [DisplayName("Data da Devolução")]
-        public DateTime devolucao_real { get; set; }
+        public DateTime data_devolucao_real { get; set; }
 
         //Navegação para a tabela Cliente
         public Cliente Cliente { get; set; }
