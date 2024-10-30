@@ -43,7 +43,7 @@ namespace Locadora_Filmes_e_Jogos.Data
                 .HasForeignKey(f => f.fk_filme);
 
 
-            //Db_Context muitos para muito item_filme_locação com locação
+            //Db_Context muitos para muito item_Jogo_locação com locação
             modelBuilder.Entity<Item_jogo_locacao>()
                 .HasKey(ijl => new { ijl.fk_locacao, ijl.fk_jogo });
 
