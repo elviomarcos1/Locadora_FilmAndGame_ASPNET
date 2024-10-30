@@ -27,6 +27,35 @@ namespace Locadora_Filmes_e_Jogos.Data
                 .HasForeignKey(l => l.fk_cliente);
 
             base.OnModelCreating(modelBuilder);
+
+
+            //Db_Context muitos para muito item_filme_locação com locação
+            modelBuilder.Entity<Item_filme_locacao>()
+                .HasKey(ifl => new { ifl.fk_locacao, ifl.fk_filme });
+
+            modelBuilder.Entity<Item_filme_locacao>()
+                .HasOne(l => l.Locacao)
+                .WithMany(ifl => ifl.Item_filme)
+                .HasForeignKey(l => l.fk_locacao);
+            modelBuilder.Entity<Item_filme_locacao>()
+                .HasOne(f => f.Filme)
+                .WithMany(ifl => ifl.Item_film)
+                .HasForeignKey(f => f.fk_filme);
+
+
+            //Db_Context muitos para muito item_filme_locação com locação
+            modelBuilder.Entity<Item_jogo_locacao>()
+                .HasKey(ijl => new { ijl.fk_locacao, ijl.fk_jogo });
+
+            modelBuilder.Entity<Item_jogo_locacao>()
+                .HasOne(l => l.Locacao)
+                .WithMany(ijl => ijl.Item_jogo)
+                .HasForeignKey(l => l.fk_locacao);
+            modelBuilder.Entity<Item_jogo_locacao>()
+                .HasOne(j => j.Jogo)
+                .WithMany(ijl => ijl.Item_jogo)
+                .HasForeignKey(j => j.fk_jogo);
+
         }
 
     }

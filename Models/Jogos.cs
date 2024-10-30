@@ -26,5 +26,7 @@ namespace Locadora_Filmes_e_Jogos.Models
         [MaxLength(1, ErrorMessage = "Este campo só pode ter 1 Caracteres")]
         [DisplayName("Ativo")]
         public string ativo_jogos { get; set; }
+
+        public ICollection<Item_jogo_locacao> Item_jogo { get; set; }
     }
 }
