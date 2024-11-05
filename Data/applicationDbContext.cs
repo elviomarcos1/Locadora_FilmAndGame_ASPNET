@@ -57,6 +57,6 @@ namespace Locadora_Filmes_e_Jogos.Data
                 .HasForeignKey(j => j.fk_jogo);
 
         }
-
+        public DbSet<Locadora_Filmes_e_Jogos.Models.Locacao> Locacao { get; set; } = default!;
     }
 }

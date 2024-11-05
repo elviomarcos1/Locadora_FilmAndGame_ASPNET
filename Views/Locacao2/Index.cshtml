@@ -1,0 +1,92 @@
+﻿@model Locadora_Filmes_e_Jogos.Models.LocacaoViewModel
+@{
+    ViewData["Title"] = "Locação";
+}
+
+<h1>Locação</h1>
+
+<div class="container-fluid">
+    <div>
+        <label>Funcionario</label>
+        <input type="text" name="Funcionario" value=""/>
+    </div>
+    <div>
+        <label>Cliente</label>
+        <input type="text" name="Funcionario" value="" />
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Filmes.First().pk_filmes)</th>
+            <th>@Html.DisplayNameFor(model => model.Filmes.First().nome_filme)</th>
+            <th>@Html.DisplayNameFor(model => model.Filmes.First().classificacao_filme)</th>
+            <th>@Html.DisplayNameFor(model => model.Filmes.First().ano_lancamento_filmes)</th>
+            <th>@Html.DisplayNameFor(model => model.Filmes.First().nota_filme)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Filmes)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.pk_filmes)</td>
+            <td>@Html.DisplayFor(modelItem => item.nome_filme)</td>
+            <td>@Html.DisplayFor(modelItem => item.classificacao_filme)</td>
+            <td>@Html.DisplayFor(modelItem => item.ano_lancamento_filmes)</td>
+            <td>@Html.DisplayFor(modelItem => item.nome_filme)</td>
+            <td>
+                <form asp-action="Alugar" method="post">
+                    <input type="hidden" name="indexFilme" value="@item.pk_filmes" />
+                    <button class="btn btn-primary" type="submit">Alugar</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Jogos.First().pk_jogo)</th>
+            <th>@Html.DisplayNameFor(model => model.Jogos.First().nome_jogo)</th>
+            <th>@Html.DisplayNameFor(model => model.Jogos.First().classificacao_jogo)</th>
+            <th>@Html.DisplayNameFor(model => model.Jogos.First().ano_lancamento_jogo)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Jogos)
+    {  
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.pk_jogo)</td>
+                <td>@Html.DisplayFor(modelItem => item.nome_jogo)</td>
+                <td>@Html.DisplayFor(modelItem => item.classificacao_jogo)</td>
+                <td>@Html.DisplayFor(modelItem => item.ano_lancamento_jogo)</td>
+                <td>
+                    <form asp-action="Alugar" method="post">
+                        <input type="hidden" name="indexJogo" value="@item.pk_jogo" />
+                        <button class="btn btn-primary" type="submit">Alugar</button>
+                    </form>
+                </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div class="container">
+    <div class="col-12">
+        <div class="row">
+            <form asp-action="FinalizarLocacao" method="post">
+                <input type="hidden" name="Alugar" value="" />
+                <button class="btn btn-primary" type="submit">Finalizar Locação</button>
+            </form>
+            <form asp-action="CancelarLocacao" method="post">
+                <input type="hidden" name="Cancelar" value="" />
+                <button class="btn btn-primary" type="submit">Cancelar Locação</button>
+            </form>
+        </div>
+    </div>
+</div>
