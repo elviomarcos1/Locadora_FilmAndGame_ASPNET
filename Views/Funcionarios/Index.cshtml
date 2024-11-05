@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Locadora_Filmes_e_Jogos.Models.Funcionario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nome_funcionario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cpf_funcionario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ano_nascimento_funcionario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sexo_funcionario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.funcao_funcionario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ativo_funcionario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome_funcionario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cpf_funcionario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ano_nascimento_funcionario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sexo_funcionario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.funcao_funcionario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ativo_funcionario)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.pk_funcionario">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.pk_funcionario">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.pk_funcionario">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

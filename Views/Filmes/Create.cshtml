@@ -1,0 +1,50 @@
+﻿@model Locadora_Filmes_e_Jogos.Models.Filmes
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Filmes</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nome_filme" class="control-label"></label>
+                <input asp-for="nome_filme" class="form-control" />
+                <span asp-validation-for="nome_filme" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="classificacao_filme" class="control-label"></label>
+                <input asp-for="classificacao_filme" class="form-control" />
+                <span asp-validation-for="classificacao_filme" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ano_lancamento_filmes" class="control-label"></label>
+                <input asp-for="ano_lancamento_filmes" class="form-control" />
+                <span asp-validation-for="ano_lancamento_filmes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nota_filme" class="control-label"></label>
+                <input asp-for="nota_filme" class="form-control" />
+                <span asp-validation-for="nota_filme" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ativo_filmes" class="control-label"></label>
+                <input asp-for="ativo_filmes" class="form-control" />
+                <span asp-validation-for="ativo_filmes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

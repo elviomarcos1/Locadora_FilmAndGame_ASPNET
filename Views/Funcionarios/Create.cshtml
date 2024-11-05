@@ -1,0 +1,55 @@
+﻿@model Locadora_Filmes_e_Jogos.Models.Funcionario
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Funcionario</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nome_funcionario" class="control-label"></label>
+                <input asp-for="nome_funcionario" class="form-control" />
+                <span asp-validation-for="nome_funcionario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cpf_funcionario" class="control-label"></label>
+                <input asp-for="cpf_funcionario" class="form-control" />
+                <span asp-validation-for="cpf_funcionario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ano_nascimento_funcionario" class="control-label"></label>
+                <input asp-for="ano_nascimento_funcionario" class="form-control" />
+                <span asp-validation-for="ano_nascimento_funcionario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sexo_funcionario" class="control-label"></label>
+                <input asp-for="sexo_funcionario" class="form-control" />
+                <span asp-validation-for="sexo_funcionario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="funcao_funcionario" class="control-label"></label>
+                <input asp-for="funcao_funcionario" class="form-control" />
+                <span asp-validation-for="funcao_funcionario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ativo_funcionario" class="control-label"></label>
+                <input asp-for="ativo_funcionario" class="form-control" />
+                <span asp-validation-for="ativo_funcionario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

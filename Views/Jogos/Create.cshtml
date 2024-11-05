@@ -1,0 +1,45 @@
+﻿@model Locadora_Filmes_e_Jogos.Models.Jogos
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Jogos</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nome_jogo" class="control-label"></label>
+                <input asp-for="nome_jogo" class="form-control" />
+                <span asp-validation-for="nome_jogo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="classificacao_jogo" class="control-label"></label>
+                <input asp-for="classificacao_jogo" class="form-control" />
+                <span asp-validation-for="classificacao_jogo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ano_lancamento_jogo" class="control-label"></label>
+                <input asp-for="ano_lancamento_jogo" class="form-control" />
+                <span asp-validation-for="ano_lancamento_jogo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ativo_jogos" class="control-label"></label>
+                <input asp-for="ativo_jogos" class="form-control" />
+                <span asp-validation-for="ativo_jogos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Locadora_Filmes_e_Jogos.Models.Jogos>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nome_jogo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.classificacao_jogo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ano_lancamento_jogo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ativo_jogos)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome_jogo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.classificacao_jogo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ano_lancamento_jogo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ativo_jogos)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.pk_jogo">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.pk_jogo">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.pk_jogo">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

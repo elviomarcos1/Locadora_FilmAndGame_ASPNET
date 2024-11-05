@@ -1,0 +1,48 @@
+﻿@model Locadora_Filmes_e_Jogos.Models.Filmes
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Filmes</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nome_filme)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nome_filme)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.classificacao_filme)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.classificacao_filme)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ano_lancamento_filmes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ano_lancamento_filmes)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nota_filme)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nota_filme)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ativo_filmes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ativo_filmes)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.pk_filmes">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
