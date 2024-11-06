@@ -1,5 +1,5 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
@@ -18,5 +18,13 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    background-position: center;
+    background-size:cover;
+    background-image: url(/css/img/banner-left.webp);
+    margin-bottom: 60px;
+    font-family: "Nanum Gothic Coding", serif;
+}
+
+nav-link:hover{
+    color:#fff !important;
 }
