@@ -24,3 +24,11 @@ body {
     margin-bottom: 60px;
     font-family: "Nanum Gothic Coding", serif;
 }
+
+.footer{
+    background-color: #0000007D;
+}
+
+.formularios{
+    margin: 20px;
+}
