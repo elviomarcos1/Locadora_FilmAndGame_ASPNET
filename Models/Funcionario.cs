@@ -20,7 +20,6 @@ namespace Locadora_Filmes_e_Jogos.Models
         public string cpf_funcionario { get; set; }
 
         [Required]
-        [MaxLength(4, ErrorMessage = "Este campo só pode ter 4 Digitos")]
         [DisplayName("Ano de Nascimento")]
         public int ano_nascimento_funcionario { get; set; }
 

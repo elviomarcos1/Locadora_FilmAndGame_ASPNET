@@ -20,7 +20,6 @@ namespace Locadora_Filmes_e_Jogos.Models
         public string cpf_cliente { get; set; }
 
         [Required]
-        [MaxLength(4, ErrorMessage = "O ano não pode ter mais de 4 Digitos")]
         [DisplayName("Ano de Nascimento")]
         public int ano_nascimento_cliente { get; set; }
 
@@ -33,6 +32,6 @@ namespace Locadora_Filmes_e_Jogos.Models
         public string ativo_cliente { get; set; }
 
         //Relacionamento um para muitos
-        public ICollection<Locacao> Locacao { get; set; }
+        public ICollection<Locacao>? Locacao { get; set; }
     }
 }
