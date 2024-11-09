@@ -5,6 +5,13 @@
 
 <h1 class="d-flex m-3">Locação</h1>
 
+@if (TempData["AlertMessage"] != null)
+{
+    <div id="alert-div" class="alert alert-danger" role="alert" style="display: none;">
+        @TempData["AlertMessage"]
+   </div> 
+}
+
 <div class="container-fluid">
     <div class="row">
         <div class="col">
@@ -92,3 +99,13 @@
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var alertDiv = $("#alert-div");
+        if (alertDiv.text().trim().length > 0) 
+        { 
+            alertDiv.show(); 
+        } });
+</script>
