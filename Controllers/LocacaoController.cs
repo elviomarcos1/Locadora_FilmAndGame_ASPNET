@@ -61,14 +61,15 @@ namespace Locadora_Filmes_e_Jogos.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> FinalizarLocacao()
+        public async Task<IActionResult> FinalizarLocacao(int ClienteID, int FuncionarioID)
         {
+
             if (!ListaFilmes.Any() || !ListaJogos.Any())
             {
                 TempData["AlertMessage"] = "Error as Listas estão Vazias";
                 return RedirectToAction("Index");
             }
-            return Content("Enviando");
+            return Content("ClienteID = " + ClienteID.ToString() + " FuncionarioID = " + FuncionarioID.ToString());
         }
 
         [HttpPost]

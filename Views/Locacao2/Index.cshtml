@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col">
         <label>Funcionario</label>
-            <select class="form-control w-50 p-3" name="FuncionarioID">
+            <select class="form-control w-50 p-3" id="funcionarioSelect" name="FuncionarioID">
             <option value="">Selecione um Funcionario</option>
                 @foreach(var funcionario in Model.Funcionarios)
                 {
@@ -27,7 +27,7 @@
         </div>
         <div class="col">
         <label>Cliente</label>
-            <select class="form-control w-50 p-3" name="ClienteID">
+            <select class="form-control w-50 p-3" id="clienteSelect" name="ClienteID">
                 <option value="">Selecione o Cliente</option>
                 @foreach (var cliente in Model.Clientes)
                 {
@@ -102,8 +102,9 @@
     <div class="col-12">
         <div class="row">
             <form asp-action="FinalizarLocacao" method="post">
-                <input type="hidden" name="Alugar" value="" />
-                <button class="btn btn-success mt-1" type="submit">Finalizar Locação</button>
+                <input type="hidden" id="funcionarioIdFinalizar" name="FuncionarioID" value="" />
+                <input type="hidden" id="clienteIdFinalizar" name="ClienteID" value="" />
+                <button class="btn btn-success mt-1" type="submit" onclick="setValues()">Finalizar Locação</button>
             </form>
             <form asp-action="CancelarLocacao" method="post">
                 <input type="hidden" name="Cancelar" value="" />
@@ -115,6 +116,20 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
+
+    function setValues() {
+        // Obtém os valores dos selects
+        var funcionarioId = document.getElementById("funcionarioSelect").value;
+        var clienteId = document.getElementById("clienteSelect").value;
+
+        // Define os valores nos inputs hidden dos formulários
+        document.getElementById("funcionarioIdFinalizar").value = funcionarioId;
+        document.getElementById("clienteIdFinalizar").value = clienteId;
+
+        document.getElementById("funcionarioIdCancelar").value = funcionarioId;
+        document.getElementById("clienteIdCancelar").value = clienteId;
+    }
+
     $(document).ready(function () {
         var alertDiv = $("#alert-div");
         if (alertDiv.text().trim().length > 0) 
