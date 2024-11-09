@@ -24,7 +24,9 @@ namespace Locadora_Filmes_e_Jogos.Controllers
             var model = new LocacaoViewModel
             {
                 Filmes = _context.filmes.ToList().Where(f => f.ativo_filmes.Contains("S")),
-                Jogos = _context.jogos.ToList().Where(j => j.ativo_jogos.Contains("S"))
+                Jogos = _context.jogos.ToList().Where(j => j.ativo_jogos.Contains("S")),
+                Clientes = _context.cliente.ToList().Where(c => c.ativo_cliente.Contains("S")),
+                Funcionarios = _context.funcionario.ToList().Where(f => f.ativo_funcionario.Contains("S"))
             };
             
             return View(model);
