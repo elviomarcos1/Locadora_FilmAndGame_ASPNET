@@ -12,11 +12,11 @@
    </div> 
 }
 
-<div class="container-fluid">
+<div class="container-fluid m-3">
     <div class="row">
         <div class="col">
         <label>Funcionario</label>
-        <select class="form-control" name="FuncionarioID">
+            <select class="form-control w-50 p-3" name="FuncionarioID">
             <option value="">Selecione um Funcionario</option>
                 @foreach(var funcionario in Model.Funcionarios)
                 {
@@ -27,7 +27,7 @@
         </div>
         <div class="col">
         <label>Cliente</label>
-            <select class="form-control" name="ClienteID">
+            <select class="form-control w-50 p-3" name="ClienteID">
                 <option value="">Selecione o Cliente</option>
                 @foreach (var cliente in Model.Clientes)
                 {
