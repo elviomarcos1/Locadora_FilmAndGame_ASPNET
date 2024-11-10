@@ -4,52 +4,54 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1 class="m-3">Novo cadastro</h1>
 
-<h4>Funcionario</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="nome_funcionario" class="control-label"></label>
-                <input asp-for="nome_funcionario" class="form-control" />
-                <span asp-validation-for="nome_funcionario" class="text-danger"></span>
+<div class="card text-white bg-dark w-50 p-3">
+    <div class="m-3">
+        <h4>Funcionario</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4 w-50">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="nome_funcionario" class="control-label"></label>
+                        <input asp-for="nome_funcionario" class="form-control" />
+                        <span asp-validation-for="nome_funcionario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="cpf_funcionario" class="control-label"></label>
+                        <input asp-for="cpf_funcionario" class="form-control" />
+                        <span asp-validation-for="cpf_funcionario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ano_nascimento_funcionario" class="control-label"></label>
+                        <input asp-for="ano_nascimento_funcionario" class="form-control" />
+                        <span asp-validation-for="ano_nascimento_funcionario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="sexo_funcionario" class="control-label"></label>
+                        <input asp-for="sexo_funcionario" class="form-control" />
+                        <span asp-validation-for="sexo_funcionario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="funcao_funcionario" class="control-label"></label>
+                        <input asp-for="funcao_funcionario" class="form-control" />
+                        <span asp-validation-for="funcao_funcionario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ativo_funcionario" class="control-label"></label>
+                        <input asp-for="ativo_funcionario" class="form-control" />
+                        <span asp-validation-for="ativo_funcionario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-3 mb-3">
+                        <input class="btn btn-success" type="submit" value="Salvar" />
+                        <a class="btn btn-primary" asp-action="Index">Voltar</a>
+                    </div>
+
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="cpf_funcionario" class="control-label"></label>
-                <input asp-for="cpf_funcionario" class="form-control" />
-                <span asp-validation-for="cpf_funcionario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ano_nascimento_funcionario" class="control-label"></label>
-                <input asp-for="ano_nascimento_funcionario" class="form-control" />
-                <span asp-validation-for="ano_nascimento_funcionario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="sexo_funcionario" class="control-label"></label>
-                <input asp-for="sexo_funcionario" class="form-control" />
-                <span asp-validation-for="sexo_funcionario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="funcao_funcionario" class="control-label"></label>
-                <input asp-for="funcao_funcionario" class="form-control" />
-                <span asp-validation-for="funcao_funcionario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ativo_funcionario" class="control-label"></label>
-                <input asp-for="ativo_funcionario" class="form-control" />
-                <span asp-validation-for="ativo_funcionario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 

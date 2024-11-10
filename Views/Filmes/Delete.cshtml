@@ -4,48 +4,49 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<h1 class="m-3">Deletar</h1>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Filmes</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.nome_filme)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.nome_filme)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.classificacao_filme)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.classificacao_filme)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ano_lancamento_filmes)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ano_lancamento_filmes)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.nota_filme)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.nota_filme)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ativo_filmes)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ativo_filmes)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="pk_filmes" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+<div class="card text-white bg-dark w-50 p-3">
+    <div class="m-3">
+        <h4>Filmes</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.nome_filme)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.nome_filme)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.classificacao_filme)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.classificacao_filme)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ano_lancamento_filmes)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ano_lancamento_filmes)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.nota_filme)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.nota_filme)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ativo_filmes)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ativo_filmes)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="pk_filmes" />
+            <input type="submit" value="Deletar" class="btn btn-danger" />
+            <a class="btn btn-primary" asp-action="Index">Voltar</a>
+        </form>
+    </div>
 </div>
