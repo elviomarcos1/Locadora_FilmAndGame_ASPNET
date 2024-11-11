@@ -28,6 +28,6 @@ namespace Locadora_Filmes_e_Jogos.Models
         [DisplayName("Ativo")]
         public string ativo_filmes { get; set; }
 
-        public ICollection<Item_filme_locacao>? Item_film { get; set; }
+        public ICollection<Item_filme_locacao>? Item_filme_locacao { get; set; }
     }
 }

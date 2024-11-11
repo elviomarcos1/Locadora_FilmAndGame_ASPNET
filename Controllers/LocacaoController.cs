@@ -63,14 +63,81 @@ namespace Locadora_Filmes_e_Jogos.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> FinalizarLocacao(int ClienteID, int FuncionarioID)
         {
-
-            if (!ListaFilmes.Any() || !ListaJogos.Any())
+            if (!ListaFilmes.Any() && !ListaJogos.Any() || ClienteID == 0 || FuncionarioID == 0)
             {
-                TempData["AlertMessage"] = "Error as Listas estão Vazias";
+                TempData["AlertMessage"] = "Confira os campos de Funcionario e Cliente e lembre-se que seu carrinho não pode estar vazio!";
                 return RedirectToAction("Index");
             }
-            return Content("ClienteID = " + ClienteID.ToString() + " FuncionarioID = " + FuncionarioID.ToString());
+
+            var novaLocacao = new Locacao()
+            {
+                fk_cliente = ClienteID,
+                data_locacao = DateTime.Today,
+                data_devolucao_prevista = DateTime.Today.AddDays(5),
+                data_devolucao_real = null
+            };
+
+            _context.Add(novaLocacao);
+            await _context.SaveChangesAsync();
+
+            foreach (var filmeId in ListaFilmes)
+            {
+           
+                var filme = await _context.filmes.FindAsync(filmeId);
+                if (filme != null)
+                {
+                    var itemFilmeLocacao = new Item_filme_locacao()
+                    {
+                        fk_locacao = novaLocacao.pk_locacao,
+                        fk_filme = filme.pk_filmes
+                    };
+
+                    _context.item_filme_locacao.Add(itemFilmeLocacao);
+                }
+            }
+
+            foreach (var jogoId in ListaJogos)
+            {
+            
+                var jogo = await _context.jogos.FindAsync(jogoId);
+                if (jogo != null)
+                {
+                    var itemJogoLocacao = new Item_jogo_locacao()
+                    {
+                        fk_locacao = novaLocacao.pk_locacao,
+                        fk_jogo = jogo.pk_jogo 
+                    };
+
+                    _context.item_jogo_locacao.Add(itemJogoLocacao);
+                }
+            }
+
+            foreach (var filmeId in ListaFilmes)
+            {
+                var filme = await _context.filmes.FindAsync(filmeId);
+                if (filme != null)
+                {
+                    filme.ativo_filmes = "N";
+                }
+            }
+
+            foreach (var jogoId in ListaJogos)
+            {
+                var jogo = await _context.jogos.FindAsync(jogoId);
+                if (jogo != null)
+                {
+                    jogo.ativo_jogos = "N";
+                }
+            }
+
+            await _context.SaveChangesAsync();
+
+            ListaFilmes.Clear();
+            ListaJogos.Clear();
+
+            return RedirectToAction("Pedido", "Locacao2", new { id = novaLocacao.pk_locacao });
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -99,5 +166,46 @@ namespace Locadora_Filmes_e_Jogos.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Pedido(int ID)
+        {
+            // Buscar a locação
+            var locacao = await _context.Locacao
+                .Include(l => l.Cliente)  // Carregar os dados do cliente
+                .FirstOrDefaultAsync(l => l.pk_locacao == ID);
+
+            if (locacao == null)
+            {
+                return NotFound();  // Se a locação não for encontrada
+            }
+
+            // Obter a lista de filmes e jogos associados à locação
+            var filmesLocacao = await _context.item_filme_locacao
+                .Where(ifl => ifl.fk_locacao == ID)
+                .Include(ifl => ifl.Filme)
+                .Select(ifl => ifl.Filme)
+                .ToListAsync();
+
+            var jogosLocacao = await _context.item_jogo_locacao
+                .Where(ijl => ijl.fk_locacao == ID)
+                .Include(ijl => ijl.Jogo)
+                .Select(ijl => ijl.Jogo)
+                .ToListAsync();
+
+            // Criar o ViewModel
+            var viewModel = new PedidoViewModel
+            {
+                NumeroLocacao = locacao.pk_locacao,
+                NomeCliente = locacao.Cliente.nome_cliente,
+                DataLocacao = locacao.data_locacao,
+                DataDevolucaoPrevista = locacao.data_devolucao_prevista,
+                Filmes = filmesLocacao,
+                Jogos = jogosLocacao
+            };
+
+            // Retornar a view com o ViewModel
+            return View(viewModel);
+        }
+
     }
 }

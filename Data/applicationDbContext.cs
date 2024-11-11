@@ -17,6 +17,10 @@ namespace Locadora_Filmes_e_Jogos.Data
 
         public DbSet<Jogos> jogos { get; set; }
 
+        public DbSet<Item_filme_locacao> item_filme_locacao { get; set; }
+
+        public DbSet<Item_jogo_locacao> item_jogo_locacao { get; set; }
+
         //DbSet com chaves estrangeiras
         //locação
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -35,11 +39,11 @@ namespace Locadora_Filmes_e_Jogos.Data
 
             modelBuilder.Entity<Item_filme_locacao>()
                 .HasOne(l => l.Locacao)
-                .WithMany(ifl => ifl.Item_filme)
+                .WithMany(ifl => ifl.Item_filme_locacao)
                 .HasForeignKey(l => l.fk_locacao);
             modelBuilder.Entity<Item_filme_locacao>()
                 .HasOne(f => f.Filme)
-                .WithMany(ifl => ifl.Item_film)
+                .WithMany(ifl => ifl.Item_filme_locacao)
                 .HasForeignKey(f => f.fk_filme);
 
 
@@ -49,11 +53,11 @@ namespace Locadora_Filmes_e_Jogos.Data
 
             modelBuilder.Entity<Item_jogo_locacao>()
                 .HasOne(l => l.Locacao)
-                .WithMany(ijl => ijl.Item_jogo)
+                .WithMany(ijl => ijl.Item_jogo_locacao)
                 .HasForeignKey(l => l.fk_locacao);
             modelBuilder.Entity<Item_jogo_locacao>()
                 .HasOne(j => j.Jogo)
-                .WithMany(ijl => ijl.Item_jogo)
+                .WithMany(ijl => ijl.Item_jogo_locacao)
                 .HasForeignKey(j => j.fk_jogo);
 
         }

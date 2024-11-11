@@ -1,0 +1,46 @@
+﻿@model Locadora_Filmes_e_Jogos.Models.PedidoViewModel
+
+@{
+    ViewData["Title"] = "Pedido";
+}
+
+<h2>Pedido Nº @Model.NumeroLocacao</h2>
+
+<div>
+    <h3>Cliente: @Model.NomeCliente</h3>
+    <p><strong>Data da Locação:</strong> @Model.DataLocacao.ToString("dd/MM/yyyy")</p>
+    <p><strong>Data de Devolução Prevista:</strong> @Model.DataDevolucaoPrevista.ToString("dd/MM/yyyy")</p>
+</div>
+
+<h4>Filmes da Locação:</h4>
+@if (Model.Filmes != null && Model.Filmes.Any())
+{
+    <ul>
+        @foreach (var filme in Model.Filmes)
+        {
+            <li>@filme.nome_filme</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Não há filmes nesta locação.</p>
+}
+
+<h4>Jogos da Locação:</h4>
+@if (Model.Jogos != null && Model.Jogos.Any())
+{
+    <ul>
+        @foreach (var jogo in Model.Jogos)
+        {
+            <li>@jogo.nome_jogo</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Não há jogos nesta locação.</p>
+}
+
+<!-- Botão de retorno à lista de locações ou qualquer outro link desejado -->
+<a href="@Url.Action("Index", "Locacao2")">Voltar para a lista de locações</a>

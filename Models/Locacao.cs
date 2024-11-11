@@ -24,7 +24,7 @@ namespace Locadora_Filmes_e_Jogos.Models
 
         //Navegação para a tabela Cliente
         public Cliente Cliente { get; set; }
-        public ICollection<Item_filme_locacao> Item_filme { get; set; }
-        public ICollection<Item_jogo_locacao> Item_jogo { get; set; }
+        public ICollection<Item_filme_locacao> Item_filme_locacao { get; set; }
+        public ICollection<Item_jogo_locacao> Item_jogo_locacao { get; set; }
     }
 }

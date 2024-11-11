@@ -99,7 +99,8 @@
 
 <div class="m-3 d-flex">
         <form class="form-group me-3" asp-action="FinalizarLocacao" method="post">
-             <input type="hidden" name="Alugar" value="" />
+        <input type="hidden" name="ClienteID" id="ClienteID" />
+        <input type="hidden" name="FuncionarioID" id="FuncionarioID" />
              <button class="btn btn-success mt-1" type="submit">Finalizar Locação</button>
         </form>
         <form class="form-group" asp-action="CancelarLocacao" method="post">
@@ -111,9 +112,27 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
     $(document).ready(function () {
+        $("select[name='FuncionarioID']").change(function () {
+            $("#FuncionarioID").val($(this).val());
+        });
+
+        $("select[name='ClienteID']").change(function () {
+            $("#ClienteID").val($(this).val());
+        });
+
         var alertDiv = $("#alert-div");
-        if (alertDiv.text().trim().length > 0) 
-        { 
-            alertDiv.show(); 
-        } });
+        if (alertDiv.text().trim().length > 0) {
+            alertDiv.show();
+        }
+
+        $("form[asp-action='FinalizarLocacao']").submit(function (event) {
+            console.log("FuncionarioID: " + $("#FuncionarioID").val());
+            console.log("ClienteID: " + $("#ClienteID").val());
+
+            if ($("#FuncionarioID").val() === "" || $("#ClienteID").val() === "") {
+                alert("Por favor, selecione um Funcionário e um Cliente.");
+                event.preventDefault();
+            }
+        });
+    });
 </script>
