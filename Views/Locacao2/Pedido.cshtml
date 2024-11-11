@@ -4,18 +4,20 @@
     ViewData["Title"] = "Pedido";
 }
 
-<h2>Pedido Nº @Model.NumeroLocacao</h2>
+<div class="card text-white bg-dark w-50 p-3 m-3">
+<h2 class="mt-2 mb-2">Pedido Nº @Model.NumeroLocacao</h2>
 
-<div>
-    <h3>Cliente: @Model.NomeCliente</h3>
+
+    <h3 class="mt-2">Cliente: @Model.NomeCliente</h3>
     <p><strong>Data da Locação:</strong> @Model.DataLocacao.ToString("dd/MM/yyyy")</p>
     <p><strong>Data de Devolução Prevista:</strong> @Model.DataDevolucaoPrevista.ToString("dd/MM/yyyy")</p>
 </div>
 
-<h4>Filmes da Locação:</h4>
+<div class="card text-white bg-dark w-50 p-3 m-3">
+<h4 class="fs-2">Filmes:</h4>
 @if (Model.Filmes != null && Model.Filmes.Any())
 {
-    <ul>
+    <ul class="fs-4">
         @foreach (var filme in Model.Filmes)
         {
             <li>@filme.nome_filme</li>
@@ -27,10 +29,10 @@ else
     <p>Não há filmes nesta locação.</p>
 }
 
-<h4>Jogos da Locação:</h4>
+<h4 class="fs-2">Jogos:</h4>
 @if (Model.Jogos != null && Model.Jogos.Any())
 {
-    <ul>
+    <ul class="fs-4">
         @foreach (var jogo in Model.Jogos)
         {
             <li>@jogo.nome_jogo</li>
@@ -42,5 +44,8 @@ else
     <p>Não há jogos nesta locação.</p>
 }
 
+    <div class="d-flex justify-content-center">
 <!-- Botão de retorno à lista de locações ou qualquer outro link desejado -->
-<a href="@Url.Action("Index", "Locacao2")">Voltar para a lista de locações</a>
+<a class="btn btn-primary w-25" href="@Url.Action("Index", "Locacao2")">Voltar</a>
+    </div>
+</div>
